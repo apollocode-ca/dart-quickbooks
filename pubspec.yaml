@@ -1,8 +1,7 @@
 name: quickbooks
 description: Implementation of the Quickbook API in Dart
 version: 0.0.1
-author: Étienne Bouchard | apollocode.ca
-homepage: apollocode.ca
+homepage: https://apollocode.ca
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
