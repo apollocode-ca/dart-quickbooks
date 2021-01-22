@@ -107,7 +107,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text((_quickbooks.company == null) ? widget.title : _quickbooks.company.name),
+        title: Text((_quickbooks.company == null)
+            ? widget.title
+            : _quickbooks.company.name),
       ),
       backgroundColor: Colors.lightBlue.shade50,
       resizeToAvoidBottomInset: false,

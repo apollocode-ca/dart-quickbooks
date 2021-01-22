@@ -2,6 +2,7 @@
 class Company {
   /// The name of this company
   final String name;
+
   /// The logo of this company
   final String logo;
 

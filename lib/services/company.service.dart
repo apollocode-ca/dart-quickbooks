@@ -20,8 +20,9 @@ class CompanyService {
         }).then((response) async {
       switch (response.statusCode) {
         case 200:
-          var mappedBody = jsonDecode(response.body)["QueryResponse"]["CompanyInfo"][0];
-                    print(response.body);
+          var mappedBody =
+              jsonDecode(response.body)["QueryResponse"]["CompanyInfo"][0];
+          print(response.body);
           return new Company(mappedBody["CompanyName"]);
           break;
 
