@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     _quickbooks = new Quickbooks("sIEZZ51fCTI9VrPrPQuMfVC6WH04h8eDZod7Q61m",
         "ABrdPqJXTBDAdh8teIhGitjdVudGHRbCXYRott3W97Ocfie0XE", _redirectUri,
-        debug: true);
+        debug: true, useSandbox: true);
     super.initState();
   }
 
@@ -107,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text((_quickbooks.company == null) ? widget.title : _quickbooks.company.name),
       ),
       backgroundColor: Colors.lightBlue.shade50,
       resizeToAvoidBottomInset: false,

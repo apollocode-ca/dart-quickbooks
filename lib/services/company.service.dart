@@ -1,15 +1,16 @@
+import 'dart:convert';
+
 import 'package:flutter/rendering.dart';
 import 'package:http/http.dart' as http;
+import 'package:quickbooks/Models/company.dart';
 import 'package:quickbooks/quickbooks.dart';
 
-/// A Static class to perform SQL related actions
-/// on the Quickbooks Online API
-class SQLService {
+/// A Static class to obtain the authenticated company
+class CompanyService {
   /// Runs am SQL [query] on Quickbooks Online API
-  /// Must be authenticated to run. The company [code] must
-  /// be provided.
-  static Future<dynamic> runQuery(
-      String code, String accessToken, String query) async {
+  /// to return the current company
+  static Future<Company> getCompany(String code, String accessToken) async {
+    final query = "select * from CompanyInfo";
     return await http.get(
         Quickbooks.v3EndpointBaseUrl +
             "$code/query?query=$query&minorversion=40",
@@ -19,7 +20,9 @@ class SQLService {
         }).then((response) async {
       switch (response.statusCode) {
         case 200:
-          return response.body;
+          var mappedBody = jsonDecode(response.body)["QueryResponse"]["CompanyInfo"][0];
+                    print(response.body);
+          return new Company(mappedBody["CompanyName"]);
           break;
 
         case 403:

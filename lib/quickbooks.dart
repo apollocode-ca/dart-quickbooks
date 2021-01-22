@@ -2,6 +2,8 @@ library quickbooks;
 
 import 'dart:convert';
 
+import 'package:quickbooks/Models/company.dart';
+import 'package:quickbooks/services/company.service.dart';
 import 'package:quickbooks/services/sql.service.dart';
 
 import 'services/authentication.service.dart';
@@ -27,6 +29,9 @@ const REDIRECT_URL = 'https://appcenter.intuit.com/connect/oauth2';
 class Quickbooks {
   static String v3EndpointBaseUrl =
       'https://sandbox-quickbooks.api.intuit.com/v3/company/';
+
+  /// The connected Session Company
+  Company company;
 
   /// Application QB token
   final String qbToken;
@@ -87,7 +92,7 @@ class Quickbooks {
     }
     var res = await AuthenticationService.authenticate(
             qbToken, qbSecret, consumerCode, redirectUri)
-        .then((body) {
+        .then((body) async {
       Map<String, dynamic> mappedBody = jsonDecode(body);
       if (debug) {
         print(mappedBody);
@@ -95,6 +100,15 @@ class Quickbooks {
 
       this.accessToken = mappedBody["access_token"];
       this.refreshToken = mappedBody["refresh_token"];
+
+      try {
+        this.company = await getCompany();
+      } catch (error) {
+        if (debug) {
+          print(error);
+        }
+      }
+
       return true;
     }, onError: (error) {
       if (debug) {
@@ -119,6 +133,24 @@ class Quickbooks {
         print("AN ERROR OCCURED : $error");
       }
       return false;
+    });
+
+    return res;
+  }
+
+  /// Returns the current company Infos
+  Future<Company> getCompany() async {
+    if (this.accessToken.isEmpty) {
+      throw new NullThrownError();
+    }
+    var res =
+        CompanyService.getCompany(consumerRealmId, accessToken).then((body) {
+      return body;
+    }, onError: (error) {
+      if (debug) {
+        print(error);
+      }
+      throw Error();
     });
 
     return res;
