@@ -4,7 +4,11 @@ import 'package:flutter/rendering.dart';
 import 'package:http/http.dart' as http;
 import 'package:quickbooks/quickbooks.dart';
 
+/// A Static class to perform all the OAuth2 related
+/// actions on the Quickbooks Online API.
 class AuthenticationService {
+  /// Prepares the Quickbooks Online API url for the OAuth2 authentication,
+  /// Returns the prepared Url as a String.
   static String prepareUrl(String redirectUri, String clientId) {
     var data = {
       "client_id": clientId, // Application token
@@ -46,10 +50,11 @@ class AuthenticationService {
     });
   }
 
+  /// Revokes the related user session
   static Future<dynamic> disconnect(
       String qbToken, String qbSecret, String accessToken) async {
-            print("*********************************");
-            print(accessToken);
+    print("*********************************");
+    print(accessToken);
     var credentials = qbToken + ":" + qbSecret;
     Codec<String, String> stringToBase64Url = utf8.fuse(base64Url);
     String encoded = stringToBase64Url.encode(credentials);

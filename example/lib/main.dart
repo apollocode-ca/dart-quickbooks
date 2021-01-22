@@ -126,19 +126,21 @@ class _MyHomePageState extends State<MyHomePage> {
                       ? "You are connected."
                       : "You are not connected",
                 ),
-                (isConnected) ? Container(
-                  width: screenWidth,
-                  padding: EdgeInsets.all(15),
-                  child: TextField(
-                    controller: _querryController,
-                    decoration: InputDecoration(
-                      labelText: "Query",
-                      fillColor: Colors.white,
-                      border: InputBorder.none,
-                      filled: true,
-                    ),
-                  ),
-                ) : Container(),
+                (isConnected)
+                    ? Container(
+                        width: screenWidth,
+                        padding: EdgeInsets.all(15),
+                        child: TextField(
+                          controller: _querryController,
+                          decoration: InputDecoration(
+                            labelText: "Query",
+                            fillColor: Colors.white,
+                            border: InputBorder.none,
+                            filled: true,
+                          ),
+                        ),
+                      )
+                    : Container(),
                 (!isConnected)
                     ? RaisedButton(
                         onPressed: auth, child: Text("Login with Quickbooks"))

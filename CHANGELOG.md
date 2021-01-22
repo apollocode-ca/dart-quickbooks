@@ -1,3 +1,4 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.1] - Jan. 21, 2021.
 
-* TODO: Describe initial release.
+* Basic OAuth with Quickbooks Online.
+* SQL Queries on the Quickbooks engine.
