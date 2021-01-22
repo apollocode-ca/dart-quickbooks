@@ -1,6 +1,6 @@
 name: quickbooks
 description: Implementation of the Quickbook API in Dart. Basic functionalities include ; OAuth2 authentication, SQL Query for quickbooks Online and basic class mapping. 
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/apollocode-ca/dart-quickbooks
 
 environment:

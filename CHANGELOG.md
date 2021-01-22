@@ -1,3 +1,7 @@
+## [0.0.4] - Jan. 22, 2021.
+
+* Code formatting
+
 ## [0.0.3] - Jan. 22, 2021.
 
 * Getting the company informations on authentication
