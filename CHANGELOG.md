@@ -1,3 +1,7 @@
+## [0.0.2] - Jan. 22, 2021.
+
+* Formatting the files according to Dartfmt
+
 ## [0.0.1] - Jan. 21, 2021.
 
 * Basic OAuth with Quickbooks Online.
