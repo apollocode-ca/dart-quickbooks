@@ -22,8 +22,7 @@ class CompanyService {
         case 200:
           var mappedBody =
               jsonDecode(response.body)["QueryResponse"]["CompanyInfo"][0];
-          print(response.body);
-          return new Company(mappedBody["CompanyName"]);
+          return new Company(mappedBody["CompanyName"], website: (mappedBody["WebAddr"] != null) ? mappedBody["WebAddr"]["URI"] : null);
           break;
 
         case 403:

@@ -6,5 +6,8 @@ class Company {
   /// The logo of this company
   final String logo;
 
-  Company(this.name, {this.logo = ""});
+  // The company website
+  final String website;
+
+  Company(this.name, {this.logo = "", this.website = ""});
 }
