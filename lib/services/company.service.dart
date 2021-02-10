@@ -22,7 +22,13 @@ class CompanyService {
         case 200:
           var mappedBody =
               jsonDecode(response.body)["QueryResponse"]["CompanyInfo"][0];
-          return new Company(mappedBody["CompanyName"], website: (mappedBody["WebAddr"] != null) ? mappedBody["WebAddr"]["URI"] : null);
+          return new Company(mappedBody["CompanyName"],
+              website: (mappedBody["WebAddr"] != null)
+                  ? mappedBody["WebAddr"]["URI"]
+                  : null,
+              phone: (mappedBody["PrimaryPhone"] != null)
+                  ? mappedBody["PrimaryPhone"]["FreeFormNumber"]
+                  : null);
           break;
 
         case 403:

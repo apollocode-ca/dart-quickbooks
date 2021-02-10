@@ -9,5 +9,8 @@ class Company {
   // The company website
   final String website;
 
-  Company(this.name, {this.logo = "", this.website = ""});
+  // The company principal phone number
+  final String phone;
+
+  Company(this.name, {this.logo = "", this.website = "", this.phone});
 }

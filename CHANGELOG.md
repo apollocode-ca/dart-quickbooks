@@ -1,3 +1,7 @@
+## [0.0.6] - Jan. 22, 2021.
+
+* Company phone number in Company Object
+
 ## [0.0.5] - Jan. 22, 2021.
 
 * Company website in Company Object
